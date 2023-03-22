@@ -9,7 +9,11 @@ import {
 
 const CreateUserScreen =() =>{
 
-    const [state, setState] = useState(initalState);
+    const [state, setState] = useState({
+        name: "",
+        email: "",
+        phone:"",
+    })
 
     const handleChangeText = (value, name) => {
         setState({ ...state, [name]: value });
@@ -23,14 +27,18 @@ return(
         value={state.name}/>
     </View>
     <View style={styles.inputGroup}>
-        <TextInput placeholder="Email User" />
+        <TextInput placeholder="Email User"
+        onChangeText={(value) => handleChangeText(value, "email")}
+        value={state.email} />
     </View>
     <View style={styles.inputGroup}>
-        <TextInput placeholder="Phone User" />
+        <TextInput placeholder="Phone User"
+        onChangeText={(value) => handleChangeText(value, "phone")}
+        value={state.phone} />
     </View>
 
     <View >
-        <Button title="Save User" />
+        <Button title="Save User" onPress={() => console.log(state)}/>
     </View>
 
     </ScrollView>
