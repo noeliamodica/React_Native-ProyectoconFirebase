@@ -7,7 +7,9 @@ import {
     ScrollView,
   } from "react-native";
 
-const CreateUserScreen =() =>{
+  import firebase from "../database/firebase";
+
+const CreateUserScreen =(props) =>{
 
     const [state, setState] = useState({
         name: "",
@@ -17,6 +19,26 @@ const CreateUserScreen =() =>{
 
     const handleChangeText = (value, name) => {
         setState({ ...state, [name]: value });
+      };
+
+
+    const saveNewUser = async () => {
+        if (state.name === "") {
+          alert("please provide a name");
+        } else {
+    
+          try {
+            await firebase.db.collection("users").add({
+              name: stae.name,
+              email: state.email,
+              phone: state.phone,
+            })
+    
+          
+          } catch (error) {
+            console.log(error)
+          }
+        }
       };
 
 return(
@@ -38,7 +60,7 @@ return(
     </View>
 
     <View >
-        <Button title="Save User" onPress={() => console.log(state)}/>
+        <Button title="Save User" onPress={() => saveNewUser()}/>
     </View>
 
     </ScrollView>
