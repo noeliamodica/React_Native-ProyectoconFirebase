@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
     Button,
     View,
@@ -8,15 +8,28 @@ import {
   } from "react-native";
 
 const CreateUserScreen =() =>{
+
+    const [state, setState] = useState(initalState);
+
+    const handleChangeText = (value, name) => {
+        setState({ ...state, [name]: value });
+      };
+
 return(
-    <ScrollView >
-    <View>
-        <TextInput placeholder="Name User" />
+    <ScrollView style={styles.container} >
+    <View style={styles.inputGroup}>
+        <TextInput placeholder="Name User" 
+        onChangeText={(value) => handleChangeText(value, "name")}
+        value={state.name}/>
+    </View>
+    <View style={styles.inputGroup}>
         <TextInput placeholder="Email User" />
+    </View>
+    <View style={styles.inputGroup}>
         <TextInput placeholder="Phone User" />
     </View>
 
-    <View>
+    <View >
         <Button title="Save User" />
     </View>
 
