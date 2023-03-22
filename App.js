@@ -26,16 +26,17 @@ function MyStack() {
         },
       }}
     >
+       <Stack.Screen
+        name="CreateUserScreen"
+        component={CreateUserScreen}
+        options={{ title: "Create a New User" }}
+      />
       <Stack.Screen
         name="UsersList"
         component={UsersList}
         options={{ title: "Users List" }}
       />
-      <Stack.Screen
-        name="CreateUserScreen"
-        component={CreateUserScreen}
-        options={{ title: "Create a New User" }}
-      />
+     
       <Stack.Screen
         name="UserDetailScreen"
         component={UserDetailScreen}
