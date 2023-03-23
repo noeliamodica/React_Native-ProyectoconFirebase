@@ -7,7 +7,7 @@ import {
     ScrollView,
   } from "react-native";
 
-  import firebase from "../database/firebase";
+  import { app } from "../database/firebase";
 
 const CreateUserScreen =(props) =>{
 
@@ -29,14 +29,14 @@ const CreateUserScreen =(props) =>{
     
           try {
             await firebase.db.collection("users").add({
-              name: stae.name,
+              name: state.name,
               email: state.email,
               phone: state.phone,
             })
     
           
           } catch (error) {
-            console.log(error)
+
           }
         }
       };
