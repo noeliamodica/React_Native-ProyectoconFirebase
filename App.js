@@ -10,6 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import UsersList from "./screens/UsersList";
 import Register from  "./screens/Register";
+import RegisterList from "./screens/RegisterList";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,12 @@ function MyStack() {
         name="Register"
         component={Register}
         options={{ title: "Register" }}
+      />
+
+<Stack.Screen
+        name="RegisterList"
+        component={RegisterList}
+        options={{ title: "Register List" }}
       />
      
     </Stack.Navigator>

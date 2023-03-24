@@ -9,12 +9,12 @@ export default function UsersList(props){
     <ScrollView>
       <TouchableOpacity style={styles.Boton} onPress={() => props.navigation.navigate('Register')}>
         <Text style={styles.TextoBoton}>
-          Iniciar sesion
+          Inscribirse
         </Text>
       </TouchableOpacity>
       <View>
         <Text>
-          Lista de usuarios
+          Lista de inscriptos
         </Text>
       </View>
     </ScrollView>
