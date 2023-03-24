@@ -9,6 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 // Components
 
 import UsersList from "./screens/UsersList";
+import Register from  "./screens/Register";
 
 const Stack = createStackNavigator();
 
@@ -17,9 +18,9 @@ function MyStack() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#621FF7",
+          backgroundColor: "azure",
         },
-        headerTintColor: "#fff",
+        headerTintColor: "black",
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -30,6 +31,11 @@ function MyStack() {
         name="UsersList"
         component={UsersList}
         options={{ title: "Users List" }}
+      />
+        <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{ title: "Register" }}
       />
      
     </Stack.Navigator>
@@ -47,7 +53,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "coral",
     alignItems: "center",
     justifyContent: "center",
   },

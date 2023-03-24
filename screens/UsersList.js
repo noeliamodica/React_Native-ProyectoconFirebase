@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
 
 
-export default function UsersList(){
+export default function UsersList(props){
 
 
   return (
     <ScrollView>
-      <TouchableOpacity>
-        <Text>
-          Registrarse
+      <TouchableOpacity style={styles.Boton} onPress={() => props.navigation.navigate('Register')}>
+        <Text style={styles.TextoBoton}>
+          Iniciar sesion
         </Text>
       </TouchableOpacity>
+      <View>
+        <Text>
+          Lista de usuarios
+        </Text>
+      </View>
     </ScrollView>
   )
 }
@@ -23,5 +28,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  Boton:{
+    backgroundColor: 'linen',
+    height: 35,
+    borderColor: 'black',
+    borderWidth: 1
+  }
+  ,
+  TextoBoton:{
+    fontSize: 18,
+    textAlign: 'center'
+  }
+
 });
 
