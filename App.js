@@ -40,7 +40,7 @@ function MyStack() {
       />
 
 <Stack.Screen
-        name="RegisterList"
+        name="Show"
         component={RegisterList}
         options={{ title: "Register List" }}
       />
