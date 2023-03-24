@@ -44,7 +44,7 @@ export default function Agenda(props){
         </Text>
       </View>
 
-    <View>
+    <View >
       {
         lista.map((lista)=>(
           <TouchableOpacity key={lista.id} style={styles.BotonLista} 
@@ -82,6 +82,13 @@ const styles = StyleSheet.create({
   TextoTitulo:{
     textAlign: 'center',
     marginTop: 20,
+  },
+  BotonLista:{
+    flex: 1,
+    padding: 5,
+    marginBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccccc'
   }
 
 });
