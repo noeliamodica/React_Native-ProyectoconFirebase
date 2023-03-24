@@ -1,21 +1,21 @@
 import  React, { useEffect, useState } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import appFirebase from "../credenciales";
 import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc, gotRef } from 'firebase/firestore'
 import { StatusBar } from 'expo-status-bar';
-import { async } from '@firebase/util';
+
 
 
 const db = getFirestore(appFirebase)
 
 
-export default function RegisterList(props){
+export default function Listado(props){
 
     const [user, setUser] = useState({})
 
     const getOneProduct = async(id)=>{
         try {
-            const docRef = doc(db, 'users', id )
+            const docRef = doc(db, 'tareas', id )
             const docSnap = await getDoc(docRef)
             setUser(docSnap.data())
         } catch {
@@ -25,23 +25,24 @@ export default function RegisterList(props){
 
     useEffect(()=>{
         getOneProduct(props.route.params.userId)
-    },[])
+    },[setUser])
 
     const deleteUser = async(id)=>{
-        await deleteDoc(doc(db, 'users', id))
-        Alert.alert('message', 'user deleted' )
-        props.navigation.navigate('UsersList')
+        await deleteDoc(doc(db, 'tareas', id))
+      
+        props.navigation.navigate('Agenda')
     }
+   
     
 return(
     <View>
-        <Text style={styles.titulo}> User Detail </Text>
-        <Text style={styles.sub}>Name: {user.Name} </Text>
-        <Text style={styles.sub}>Mail: {user.Mail} </Text>
-        <Text style={styles.sub}>Password: {user.Password} </Text>
+        <Text style={styles.titulo}> Detalle de tareas </Text>
+        <Text style={styles.sub}>Tarea: {user.Tarea} </Text>
+        <Text style={styles.sub}>Prioridad: {user.Prioridad} </Text>
 
         <TouchableOpacity style={styles.BotonLista} onPress={ ()=>deleteUser(props.route.params.userId)   } >
             <Text style={styles.TextoNombre}> Eliminar</Text>
+      
         </TouchableOpacity>
 
         <StatusBar style='auto'/>

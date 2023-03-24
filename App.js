@@ -8,9 +8,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 // Components
 
-import UsersList from "./screens/UsersList";
-import Register from  "./screens/Register";
-import RegisterList from "./screens/RegisterList";
+import Agenda from "./screens/Agenda";
+import Agregar from  "./screens/Agregar";
+import Listado from "./screens/Listado";
 
 const Stack = createStackNavigator();
 
@@ -29,20 +29,20 @@ function MyStack() {
     >
   
       <Stack.Screen
-        name="UsersList"
-        component={UsersList}
-        options={{ title: "Users List" }}
+        name="Agenda"
+        component={Agenda}
+        options={{ title: "Agenda" }}
       />
         <Stack.Screen
-        name="Register"
-        component={Register}
-        options={{ title: "Register" }}
+        name="Agregar"
+        component={Agregar}
+        options={{ title: "Agregar" }}
       />
 
 <Stack.Screen
-        name="Show"
-        component={RegisterList}
-        options={{ title: "Register List" }}
+        name="Listado"
+        component={Listado}
+        options={{ title: "Listado" }}
       />
      
     </Stack.Navigator>

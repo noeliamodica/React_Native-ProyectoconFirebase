@@ -8,12 +8,11 @@ import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDo
 const db = getFirestore(appFirebase)
 
 
-export default function Register(props){
+export default function Agregar(props){
 
     const initialState ={
-        Name:'',
-        Mail: '',
-        Password: '',
+        Tarea: '',
+        Prioridad: '',
     }
     
 
@@ -23,13 +22,13 @@ export default function Register(props){
         setState({...state, [name]:value })
   }
 
-  const saveUser =async()=>{
+  const saveToDo =async()=>{
     try {
-        await addDoc(collection(db, 'users'),{
+        await addDoc(collection(db, 'tareas'),{
             ...state
         })
-        Alert.alert('Alerta', 'usuario registrado')
-        props.navigation.navigate('UsersList')
+        
+        props.navigation.navigate('Agenda')
     } catch  {
         console.error(error)
     }
@@ -39,29 +38,24 @@ export default function Register(props){
     
     <ScrollView style={styles.container}>
         <Text style={styles.titulo}>
-            Inscribirse
+            Agregar
         </Text>
+       
         <View style={styles.inputgroup}>
-        <TextInput placeholder="Name" 
-            onChangeText={(value)=>handleChangeText(value, 'Name') }
-            value={state.Name}
-            />
-        </View>
-        <View style={styles.inputgroup}>
-        <TextInput placeholder="Mail"
-           onChangeText={(value)=>handleChangeText(value, 'Mail') }
-           value={state.Mail}
+        <TextInput placeholder="Tarea"
+           onChangeText={(value)=>handleChangeText(value, 'Tarea') }
+           value={state.Tarea}
         />
         </View>
         <View style={styles.inputgroup}>
-        <TextInput placeholder="Password"
-            onChangeText={(value)=>handleChangeText(value, 'Password') }
-            value={state.Password}
+        <TextInput placeholder="Prioridad"
+            onChangeText={(value)=>handleChangeText(value, 'Prioridad') }
+            value={state.Prioridad}
         />
         </View>
 
         <View style={styles.inputgroup}>
-        <Button title="Register" onPress={saveUser} />
+        <Button title="Agregar" onPress={saveToDo} />
 
 
         </View>

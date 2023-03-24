@@ -6,22 +6,21 @@ import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDo
 const db = getFirestore(appFirebase)
 
 
-export default function UsersList(props){
+export default function Agenda(props){
 
   const [lista, setLista] = useState([])
 
     useEffect(()=>{
         const getLista = async ()=>{
             try {
-                const querySnapshot = await getDocs (collection(db, 'users') )
+                const querySnapshot = await getDocs (collection(db, 'tareas') )
                 const docs = []
                 querySnapshot.forEach((doc)=>{
-                    const {Name, Mail, Password} = doc.data()
+                    const {Tarea, Prioridad} = doc.data()
                     docs.push({
                         id: doc.id,
-                        Name,
-                        Mail,
-                        Password,
+                        Tarea,
+                        Prioridad,
                     })
                 })
                 setLista(docs);
@@ -34,24 +33,24 @@ export default function UsersList(props){
 
   return (
     <ScrollView>
-      <TouchableOpacity style={styles.Boton} onPress={() => props.navigation.navigate('Register')}>
+      <TouchableOpacity style={styles.Boton} onPress={() => props.navigation.navigate('Agregar')}>
         <Text style={styles.TextoBoton}>
-          Inscribirse
+          Agregar
         </Text>
       </TouchableOpacity>
       <View>
         <Text>
-          Lista de inscriptos
+          Cosas por hacer
         </Text>
       </View>
 
     <View>
       {
-        lista.map((list)=>(
-          <TouchableOpacity key={list.id} style={styles.BotonLista} 
-            onPress={()=>props.navigation.navigate('Show', {userId:list.id}) }>
+        lista.map((lista)=>(
+          <TouchableOpacity key={lista.id} style={styles.BotonLista} 
+            onPress={()=>props.navigation.navigate('Listado', {userId:lista.id}) }>
             <Text style={styles.TextoNombre} >
-              {list.Name}
+              {lista.Tarea}
             </Text>
           </TouchableOpacity>
         ))
