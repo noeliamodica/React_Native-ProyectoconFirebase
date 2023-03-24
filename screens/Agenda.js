@@ -29,7 +29,7 @@ export default function Agenda(props){
             }
         }
             getLista()
-    },[])
+    },[setLista])
 
   return (
     <ScrollView>

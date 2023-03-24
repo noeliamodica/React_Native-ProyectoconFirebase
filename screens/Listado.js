@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import appFirebase from "../credenciales";
 import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc, gotRef } from 'firebase/firestore'
 import { StatusBar } from 'expo-status-bar';
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 const db = getFirestore(appFirebase)
@@ -27,7 +27,14 @@ export default function Listado(props){
         getOneProduct(props.route.params.userId)
     },[setUser])
 
-    const deleteUser = async(id)=>{
+    const updateTask = async(id)=>{
+        await getDoc(doc(db, 'tareas', id))
+      
+        props.navigation.navigate('Agenda')
+    }
+   
+
+    const deleteTask = async(id)=>{
         await deleteDoc(doc(db, 'tareas', id))
       
         props.navigation.navigate('Agenda')
@@ -40,10 +47,15 @@ return(
         <Text style={styles.sub}>Tarea: {user.Tarea} </Text>
         <Text style={styles.sub}>Prioridad: {user.Prioridad} </Text>
 
-        <TouchableOpacity style={styles.BotonLista} onPress={ ()=>deleteUser(props.route.params.userId)   } >
-            <Text style={styles.TextoNombre}> Eliminar</Text>
-      
+        <TouchableOpacity style={styles.BotonLista} onPress={ ()=>updateTask(props.route.params.userId)   } >
+           
+         <Ionicons name="md-create" size={23} color="green" />
+      </TouchableOpacity>
+
+        <TouchableOpacity style={styles.BotonLista} onPress={ ()=>deleteTask(props.route.params.userId)   } >
+        <Ionicons name="md-trash" size={23} color="red" />
         </TouchableOpacity>
+
 
         <StatusBar style='auto'/>
     </View>
@@ -68,10 +80,8 @@ const styles = StyleSheet.create({
       color: 'white',
     },
     BotonLista:{
-        backgroundColor: 'red',
-        marginBottom:3,
-        padding:5,
-        marginTop:5,
+        
+        marginLeft:3,
     }
 
   });
