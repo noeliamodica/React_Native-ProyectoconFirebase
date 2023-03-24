@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, TextInput, Button } from "react-native";
+
 
 
 export default function Register(){
@@ -9,13 +10,26 @@ export default function Register(){
 
   return (
     
-    
-      <View>
-        <Text>
-          Register
+    <ScrollView style={styles.container}>
+        <Text style={styles.titulo}>
+            Register
         </Text>
-        <StatusBar style="auto" />
-      </View>
+        <View style={styles.inputgroup}>
+        <TextInput placeholder="Nombre"/>
+        </View>
+        <View style={styles.inputgroup}>
+        <TextInput placeholder="Mail"/>
+        </View>
+        <View style={styles.inputgroup}>
+        <TextInput placeholder="Password"/>
+        </View>
+
+        <View style={styles.inputgroup}>
+        <Button title="Register" />
+
+
+        </View>
+    </ScrollView>
     
   )
 }
@@ -23,20 +37,21 @@ export default function Register(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 35
   },
-  Boton:{
-    backgroundColor: 'linen',
-    height: 35,
-    borderColor: 'black',
-    borderWidth: 1
+  titulo:{
+    textAlign: 'center',
+    fontSize: 18,
+    marginTop: 12,
+    marginBottom: 20,
   }
   ,
-  TextoBoton:{
-    fontSize: 18,
-    textAlign: 'center'
+  inputgroup:{
+    flex: 1,
+    padding: 0,
+    marginBottom: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccccc'
   }
 
 });
