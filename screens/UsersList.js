@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from "react";
-import {Text, View} from 'react-native';
-import { app} from "../database/firebase";
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
 
 
-const UserList =() =>{
+export default function UsersList(){
 
-    useEffect(() => {
-        firebase.db.collection("users").onSnapshot((querySnapshot) => {
-          const users = [];
-          querySnapshot.docs.forEach((doc) => {
-            const { name, email, phone } = doc.data();
-            users.push({
-              id: doc.id,
-              name,
-              email,
-              phone,
-            });
-          });
-          setUsers(users);
-        });
-      }, []);
 
-return(
-    <View>
-        <Text> Users List </Text>
-    </View>
-)
+  return (
+    <ScrollView>
+      <TouchableOpacity>
+        <Text>
+          Registrarse
+        </Text>
+      </TouchableOpacity>
+    </ScrollView>
+  )
 }
 
-export default UserList
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
