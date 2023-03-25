@@ -48,7 +48,7 @@ export default function Agenda(props){
       {
         lista.map((lista)=>(
           <TouchableOpacity key={lista.id} style={styles.BotonLista} 
-            onPress={()=>props.navigation.navigate('Listado', {userId:lista.id}) }>
+            onPress={()=>props.navigation.navigate("Listado", {userId:lista.id}) }>
             <Text style={styles.TextoNombre} >
               {lista.Tarea}
             </Text>
@@ -69,26 +69,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   Boton:{
-    backgroundColor: 'linen',
+    backgroundColor: '#007AFF',
     height: 35,
     borderColor: 'black',
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    margin: 10,
   }
   ,
   TextoBoton:{
     fontSize: 18,
     textAlign: 'center',
+    color: '#fff',
+    fontWeight: 'bold',
   }, 
   TextoTitulo:{
     textAlign: 'center',
     marginTop: 20,
   },
   BotonLista:{
-    flex: 1,
     padding: 5,
     marginBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccccc'
+    borderBottomColor: '#ccccc',
+    backgroundColor: '#eee',
+    padding: 10,
+    borderRadius: 5,
+    margin: 5,
   }
 
 });
