@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Entypo } from '@expo/vector-icons'; 
 import { Foundation } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons'
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Components
 import Home from "./screens/Home";
@@ -13,7 +13,21 @@ import Agregar from  "./screens/Agregar";
 import Listado from "./screens/Listado";
 import Notes from "./screens/Notes";
 
+const HomeStackNavigator = createNativeStackNavigator();
+
+function MyStack(){
+    return(
+        <HomeStackNavigator.Navigator>
+            <HomeStackNavigator.Screen 
+                name="Home"
+                component={Home}
+            />
+        </HomeStackNavigator.Navigator>
+    )
+}
+
 const Tab = createBottomTabNavigator();
+
 
 function MyTabs(){
     return(
@@ -22,18 +36,19 @@ function MyTabs(){
         screenOptions={{
             tabBarActiveTintColor: 'coral',
             tabBarLabelStyle: { fontWeight: 'bold' },
-            headerShown: false
-        }
+                    }
 
         }>
             <Tab.Screen 
                 name="Home" 
-                component={Home}
+                component={MyStack}
                 options={
                     {
                         tabBarIcon: ({ color, size }) =>(
                             <Entypo name="home" size={31} color={color}/>
-                        )
+                        ),
+                        headerShown: false
+
                     }
                 } />
             <Tab.Screen 
@@ -43,7 +58,8 @@ function MyTabs(){
                     {
                         tabBarIcon: ({ color, size }) =>(
                             <MaterialIcons name="notes" size={31} color={color}  />
-                        )
+                        ),
+                     
                     }
                 }
                 />
