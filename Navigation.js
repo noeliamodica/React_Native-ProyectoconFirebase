@@ -1,8 +1,9 @@
 import React from "react";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-
-
+import { Entypo } from '@expo/vector-icons'; 
+import { Foundation } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons'
 
 
 // Components
@@ -12,14 +13,52 @@ import Agregar from  "./screens/Agregar";
 import Listado from "./screens/Listado";
 import Notes from "./screens/Notes";
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function MyTabs(){
     return(
-        <Tab.Navigator>
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Agenda" component={Agenda} />
-            <Tab.Screen name="Notes" component={Notes} />
+        <Tab.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+            tabBarActiveTintColor: 'coral',
+            tabBarLabelStyle: { fontWeight: 'bold' },
+            headerShown: false
+        }
+
+        }>
+            <Tab.Screen 
+                name="Home" 
+                component={Home}
+                options={
+                    {
+                        tabBarIcon: ({ color, size }) =>(
+                            <Entypo name="home" size={31} color={color}/>
+                        )
+                    }
+                } />
+            <Tab.Screen 
+                name="Agenda" 
+                component={Agenda} 
+                options={
+                    {
+                        tabBarIcon: ({ color, size }) =>(
+                            <MaterialIcons name="notes" size={31} color={color}  />
+                        )
+                    }
+                }
+                />
+
+            <Tab.Screen 
+                name="Notes" 
+                component={Notes}
+                options={
+                    {
+                        tabBarIcon: ({ color, size }) =>(
+                            <Foundation name="clipboard-notes" size={31} color={color}  />
+                        )
+                    }
+                }
+                 />
         </Tab.Navigator>
     )
 }
