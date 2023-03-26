@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import  React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
-import ButtonHome from './ButtonHome';
+import ButtonGradient from './ButtonGradient';
 
 
 
@@ -12,10 +12,9 @@ export default function Home(){
             <Text style={styles.sub}>Ingrese a su cuenta </Text>
             <TextInput style={styles.input} placeholder='ingrese su usuario'/>
             <TextInput style={styles.input} placeholder='ingrese su password'/>
-
-            <Text style={styles.forgotPassword}>Olvido su password? </Text>
-            <ButtonHome />
-
+            <Text style={styles.text} >Olvido su password? </Text>
+            
+            <ButtonGradient />
             <StatusBar style='auto' />
         </View>
     ) 
@@ -45,12 +44,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingStart: 20,
       },
-      forgotPassword:{
-        fontFamily: 24,
+      text:{
+        fontSize: 11,
         color: 'gray',
-        marginTop: 20,
-      },
-      
+        marginTop: 16,
+        },
 
   });
   
