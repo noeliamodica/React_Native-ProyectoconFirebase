@@ -16,20 +16,18 @@ export default function Register(){
 
     const auth = getAuth();
 
-    const registro = () => {
   
+    const registro = () => {
       createUserWithEmailAndPassword(auth, email, password)
-        .then( () => {
-          console.log('cuenta creada')
+        .then((userCredential) => {
+          console.log('cuenta creada');
           const user = userCredential.user;
-          console.log(user)
+          console.log(user);
         })
-        .catch( error => {
-          console.log (error)
-        }
-
-        )
-      
+        .catch((error) => {
+          console.log(error);
+          Alert.alert('Error', 'No se pudo crear la cuenta', [{text: 'OK'}]);
+        });
     };
     
 
@@ -45,10 +43,7 @@ export default function Register(){
             <BlurView intensity={90}>
                 <View style={styles.register}>
                 <Text style={styles.sub}>Ingrese a su cuenta </Text>
-                <View> 
-                    <Text style={styles.text}> Ingrese su nombre de usuario </Text>
-                 <TextInput style={styles.input} placeholder='usuario'/>
-                 </View>
+                
                  <View> 
                  <Text style={styles.text}> Ingrese su email </Text>
                  <TextInput onChangeText={(text)=> setEmail(text) } style={styles.input} placeholder='email'/>
@@ -64,7 +59,7 @@ export default function Register(){
                 </View>
 
                 <TouchableOpacity
-                 onPress={Register}
+                 onPress={registro}
                  style={styles.button}>
                 <Text style={styles.text}> REGISTRARSE </Text>
                 </TouchableOpacity>
