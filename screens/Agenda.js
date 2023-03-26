@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
 import appFirebase from "../credenciales";
 import {getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc } from 'firebase/firestore'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 const db = getFirestore(appFirebase)
 
+const Stack = createNativeStackNavigator();
 
-export default function Agenda(props){
+export default function Agenda({navigation}){
 
   const [lista, setLista] = useState([])
 
@@ -33,7 +36,7 @@ export default function Agenda(props){
 
   return (
     <ScrollView>
-      <TouchableOpacity style={styles.Boton} onPress={() => props.navigation.navigate('Agregar')}>
+      <TouchableOpacity style={styles.Boton} onPress={() => navigation.navigate('Agregar')}>
         <Text style={styles.TextoBoton}>
           Agregar
         </Text>

@@ -26,7 +26,7 @@ export default function ButtonGradient() {
   const styles = StyleSheet.create({
     
     ButtonGradient: {
-      width: '100%',
+      width: '160%',
       height: 30,
       borderRadius: 25,
       padding: 10,

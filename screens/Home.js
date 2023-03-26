@@ -11,10 +11,16 @@ export default function Home(){
             <Text style={styles.titulo}> Bienvenido </Text>
             <Text style={styles.sub}>Ingrese a su cuenta </Text>
             <TextInput style={styles.input} placeholder='ingrese su usuario'/>
-            <TextInput style={styles.input} placeholder='ingrese su password'/>
+            <TextInput 
+                style={styles.input} 
+                placeholder='ingrese su password'
+                secureTextEntry={true}
+                />
             <Text style={styles.text} >Olvido su password? </Text>
-            
             <ButtonGradient />
+            <TouchableOpacity> 
+            <Text style={styles.text} >No tiene cuenta? - CREAR CUENTA </Text>
+            </TouchableOpacity>
             <StatusBar style='auto' />
         </View>
     ) 
@@ -45,7 +51,7 @@ const styles = StyleSheet.create({
         paddingStart: 20,
       },
       text:{
-        fontSize: 11,
+        fontSize: 13,
         color: 'gray',
         marginTop: 16,
         },

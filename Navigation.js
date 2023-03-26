@@ -12,6 +12,7 @@ import Agenda from "./screens/Agenda";
 import Agregar from  "./screens/Agregar";
 import Listado from "./screens/Listado";
 import Notes from "./screens/Notes";
+import Register from "./screens/Register";
 
 const HomeStackNavigator = createNativeStackNavigator();
 
@@ -63,7 +64,18 @@ function MyTabs(){
                     }
                 }
                 />
-
+            <Tab.Screen 
+                name="Register" 
+                component={Register} 
+                options={
+                    {
+                        tabBarIcon: ({ color, size }) =>(
+                            <MaterialIcons name="notes" size={31} color={color}  />
+                        ),
+                     
+                    }
+                }
+                />  
             <Tab.Screen 
                 name="Notes" 
                 component={Notes}
