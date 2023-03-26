@@ -1,10 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import  React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 
+import React, { useState } from "react";
+import {Text, View, StyleSheet, TouchableOpacity, TextInput, Alert} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { appFirebase } from '../credenciales'
+
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home(){
+
+    
+    const auth = getAuth();
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const navigation = useNavigation();
+
 
     const Iniciar = () => {
         signInWithEmailAndPassword(auth, email, password)
@@ -13,6 +26,7 @@ export default function Home(){
             const user = userCredential.user;
             console.log(user);
           })
+          navigation.navigate("Agenda")
           .catch((error) => {
             console.log(error);
             Alert.alert('Error', 'No pudo ingresar a la cuenta', [{text: 'OK'}]);
@@ -29,8 +43,8 @@ export default function Home(){
                 placeholder='ingrese su password'
                 secureTextEntry={true}
                 />
-            <Text style={styles.text} >Olvido su password? </Text>
-            <TouchableOpacity >
+            
+            <TouchableOpacity onPress={Iniciar}  >
      
               <LinearGradient
                   // Button Linear Gradient
@@ -91,7 +105,7 @@ const styles = StyleSheet.create({
           },
     textButton:{
             fontSize: 12,
-            color: '#fff',
+            color: 'gray',
             marginTop: 16,
             },
 

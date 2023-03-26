@@ -23,6 +23,14 @@ function MyStack(){
                 name="Home"
                 component={Home}
             />
+            <HomeStackNavigator.Screen 
+                name="Agenda"
+                component={Agenda}
+            />
+            <HomeStackNavigator.Screen 
+                name="Register"
+                component={Register}
+            />
         </HomeStackNavigator.Navigator>
     )
 }
@@ -52,18 +60,7 @@ function MyTabs(){
 
                     }
                 } />
-            <Tab.Screen 
-                name="Agenda" 
-                component={Agenda} 
-                options={
-                    {
-                        tabBarIcon: ({ color, size }) =>(
-                            <MaterialIcons name="notes" size={31} color={color}  />
-                        ),
-                     
-                    }
-                }
-                />
+    
             <Tab.Screen 
                 name="Register" 
                 component={Register} 
