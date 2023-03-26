@@ -33,6 +33,10 @@ export default function Home(){
           });
       };
 
+      const registrarse = ()=>{
+        navigation.navigate("Register")
+      }
+
     return(
         <View style={styles.container}>
             <Text style={styles.titulo}> Bienvenido </Text>
@@ -57,7 +61,7 @@ export default function Home(){
              </LinearGradient>
   
             </TouchableOpacity>
-            <TouchableOpacity> 
+            <TouchableOpacity onPress={registrarse}> 
             <Text style={styles.textButton} >No tiene cuenta? - CREAR CUENTA </Text>
             </TouchableOpacity>
             <StatusBar style='auto' />
